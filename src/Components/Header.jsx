@@ -10,6 +10,9 @@ const Header = () => {
       <li>
         <Link to="/addCoffee"><a>Add coffee</a></Link>
       </li>
+      <li>
+        <Link to="/users"><a>Users</a></Link>
+      </li>
     </>
   );
 
@@ -48,7 +51,7 @@ const Header = () => {
       </div>
 
       <div className="navbar-end">
-        <a className="btn">Login</a>
+        <Link to="signup"><a className="btn">Sign up</a></Link>
       </div>
     </div>
   );
