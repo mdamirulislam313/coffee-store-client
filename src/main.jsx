@@ -1,4 +1,4 @@
-import { Children, Component, StrictMode } from "react";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
@@ -12,7 +12,10 @@ import Signin from "./Components/Signin.jsx";
 import SignUp from "./Components/SignUp.jsx";
 import AuthProvider from "./Context/AuthProvider.jsx";
 import Users from "./Components/Users.jsx";
+
+// Deployed server base URL
 const BASE_URL = "https://v1-coffee-store-server-gamma.vercel.app";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,7 +23,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch("https://v1-coffee-store-server-gamma.vercel.app/coffees"),
+        loader: () => fetch(`${BASE_URL}/coffees`),
         Component: Home,
       },
       {
@@ -30,13 +33,13 @@ const router = createBrowserRouter([
       {
         path: "coffee/:id",
         loader: ({ params }) =>
-          fetch(`https://v1-coffee-store-server-gamma.vercel.app/coffees/${params.id}`),
+          fetch(`${BASE_URL}/coffees/${params.id}`),
         Component: CoffeeDetails,
       },
       {
         path: "updateCoffee/:id",
         loader: ({ params }) =>
-          fetch(`https://v1-coffee-store-server-gamma.vercel.app/coffees/${params.id}`),
+          fetch(`${BASE_URL}/coffees/${params.id}`),
         Component: UpdateCoffee,
       },
       {
@@ -48,13 +51,14 @@ const router = createBrowserRouter([
         Component: SignUp,
       },
       {
-        path: 'users',
-        loader: ()=> fetch('https://v1-coffee-store-server-gamma.vercel.app/users'),
-        Component: Users
-      }
+        path: "users",
+        loader: () => fetch(`${BASE_URL}/users`),
+        Component: Users,
+      },
     ],
   },
 ]);
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
