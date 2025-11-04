@@ -5,13 +5,13 @@ const Header = () => {
   const Links = (
     <>
       <li>
-        <Link to="/"><a>Home</a></Link>
+        <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="/addCoffee"><a>Add coffee</a></Link>
+        <Link to="/addCoffee">Add Coffee</Link>
       </li>
       <li>
-        <Link to="/users"><a>Users</a></Link>
+        <Link to="/signin">Sign In</Link>
       </li>
     </>
   );
@@ -40,7 +40,7 @@ const Header = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
-            {Links}
+            {Links} 
           </ul>
         </div>
         <a className="btn btn-ghost text-xl">Coffee House</a>
@@ -51,7 +51,9 @@ const Header = () => {
       </div>
 
       <div className="navbar-end">
-        <Link to="signup"><a className="btn">Sign up</a></Link>
+        <Link to="/signup" className="btn">
+          Sign up
+        </Link>
       </div>
     </div>
   );

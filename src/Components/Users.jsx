@@ -1,11 +1,27 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
-import { useLoaderData } from "react-router";
+import { data, useLoaderData } from "react-router";
 import Swal from "sweetalert2";
 
 const Users = () => {
   const initialUsers = useLoaderData();
   const [users, setUsers] = useState(initialUsers);
+
+  // useEffect(()=>{
+  //   fetch('/')
+  //   .then(res => res.json())
+  //   .then(data =>[
+  //     console.log(data);
+  //   ])
+  // },[])
+
+  // useEffect(()=>{
+  //   axios.get('/')
+  //   .then(data => {
+  //     console.log(data.data);
+  //   })
+  // },[])
 
   const handleView = (user) => {
     Swal.fire({
@@ -37,7 +53,7 @@ const Users = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/users/${id}`, {
+        fetch(`https://v1-coffee-store-server-gamma.vercel.app/users/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

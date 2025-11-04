@@ -24,8 +24,12 @@ const SignUp = () => {
             lastSignInTime: result.user?.metadata?.lastSignInTime
         }
 
+        // using axios
+
+
+        // using fetch
         // save profile in MongoDB
-        fetch("http://localhost:3000/users", {
+        fetch("https://v1-coffee-store-server-gamma.vercel.app/users", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(userProfile),

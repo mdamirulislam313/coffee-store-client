@@ -12,7 +12,7 @@ import Signin from "./Components/Signin.jsx";
 import SignUp from "./Components/SignUp.jsx";
 import AuthProvider from "./Context/AuthProvider.jsx";
 import Users from "./Components/Users.jsx";
-
+const BASE_URL = "https://v1-coffee-store-server-gamma.vercel.app";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch("http://localhost:3000/coffees"),
+        loader: () => fetch("https://v1-coffee-store-server-gamma.vercel.app/coffees"),
         Component: Home,
       },
       {
@@ -30,13 +30,13 @@ const router = createBrowserRouter([
       {
         path: "coffee/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/coffees/${params._id}`),
+          fetch(`https://v1-coffee-store-server-gamma.vercel.app/coffees/${params.id}`),
         Component: CoffeeDetails,
       },
       {
         path: "updateCoffee/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/coffees/${params.id}`),
+          fetch(`https://v1-coffee-store-server-gamma.vercel.app/coffees/${params.id}`),
         Component: UpdateCoffee,
       },
       {
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'users',
-        loader: ()=> fetch('http://localhost:3000/users'),
+        loader: ()=> fetch('https://v1-coffee-store-server-gamma.vercel.app/users'),
         Component: Users
       }
     ],
